@@ -40,7 +40,7 @@ while True:
         print("new shows found")
         for show_id in new_show_ids:
             print(shows_dict[show_id]["text"][0]["components"][0]["text"])
-        notify(shows_dict[show_id])
+            notify(shows_dict[show_id])
 
     if not new_show_ids:
         print("No changes")
