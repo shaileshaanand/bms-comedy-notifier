@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    command: sh -c "python -u src/daemon.py"
     env_file:
       - .env
     volumes:
