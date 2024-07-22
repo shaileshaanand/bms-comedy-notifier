@@ -142,9 +142,10 @@ def update_redis_and_notify():
     current_show_ids = {show["id"] for show in current_shows_list}
     redis_client.set("shows", json.dumps(list(current_show_ids)))
     new_show_ids = current_show_ids - existing_show_ids
-    for show_id in new_show_ids:
-        logger.info(f"New show found: {show_id}")
-        notify(current_shows[show_id])
+    if new_show_ids:
+        for show_id in new_show_ids:
+            logger.info(f"New show found: {show_id}")
+            notify(current_shows[show_id])
     else:
         logger.info("No new shows found")
 
