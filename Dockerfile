@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD [ "python", "-u", "src/daemon.py" ]
+CMD [ "python", "-u", "src/scrape.py" ]
