@@ -137,9 +137,11 @@ def update_redis_and_notify():
         existing_show_ids = set(existing_show_ids_list)
     else:
         existing_show_ids = set()
+    logger.info(f"Existing shows: {existing_show_ids}")
     current_shows_list = get_shows()
     current_shows = {show["id"]: show for show in current_shows_list}
     current_show_ids = {show["id"] for show in current_shows_list}
+    logger.info(f"Current shows: {current_show_ids}")
     redis_client.set("shows", json.dumps(list(current_show_ids)))
     new_show_ids = current_show_ids - existing_show_ids
     if new_show_ids:
